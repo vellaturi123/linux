@@ -1,3 +1,203 @@
+33
+
+
+
+#!/bin/bash
+
+arr=(`printenv PATH | tr ":" " "`)  
+total=0  
+for i in ${arr[@]}   
+do
+	if [ -d $i ]  
+	then
+		cd $i   
+		count=0  
+		for j in `ls`  
+		do
+			if [ -f $j -a -x $j ]  #
+			then
+				let count=$count+1   
+			fi
+		done
+		echo -e "Current dir: $i\nCurrent count: $count"  
+		let total=$total+$count   
+	fi
+done
+echo "Total - $total"
+
+
+
+19
+
+for i in {1..10}  
+do  
+touch $i.txt;  
+done;  
+
+
+for i in *.txt  
+do  
+echo $i;  
+done;  
+
+for i in *.txt  
+do  
+newfile=${i/.txt/.zip};  
+echo $newfile;  
+done;  
+
+for i in *.txt  
+do  
+newfile=${i/.txt/.zip};  
+mv $i $newfile;  
+done:  
+ls -lta
+
+
+
+
+if [ $# -eq 1 ]  
+then
+	if [ -d $1 ]  
+	then
+		swps=(`find $1 -name "*.swp" -type f`)  
+		if [ ${#swps[@]} -ne 0 ]  
+		then
+			find $1 -name "*.swp" -type f -delete   
+		else
+			echo "No swp files found in test_swp."
+		fi
+	else
+		echo "Error : '$1' no such a file or directory"
+	fi
+else
+	swps=(`find ~ -name "*.swp" -type f`)  
+	if [ ${#swps[@]} -ne 0 ]  
+	then
+		echo "swap file found :"
+		find ~ -name "*.swp" -type f  
+	fi
+24th☝️
+First need to create directory mkdir {dir.name}
+Next Create 5 swap file command = touch .{1..5}.swp
+Next ls -la check swap files 
+goto that directory cd{dir.name}
+create file assignment24.sh and paste script and excute it.
+This for 24th
+
+
+22
+
+
+
+#!/bin/sh
+# shebang to specify that this is an shell script
+
+# Function to get File
+getFile(){
+    # Reading txtFileName to convert it's content
+    echo -n "Enter File Name:"
+    read txtFileName
+    # Checking if file exist
+    if [ ! -f $txtFileName ]; then
+        echo "File Name $txtFileName does not exists."
+        exit 1
+    fi
+}
+
+clear
+  echo "1. Uppercase to Lowercase "
+  echo "2. Lowercase to Uppercase"
+  echo "3. Exit"
+  echo -n "Enter your Choice(1-3):"
+  read Ch
+
+  case "$Ch" in
+    1) 
+      # Function Call to get File 
+      getFile    
+      # Converting to lower case if user chose 1     
+      echo "Converting Upper-case to Lower-Case "
+      tr '[A-Z]' '[a-z]' <$txtFileName
+    ;;
+
+    2)
+      # Function Call to get File 
+      getFile
+      # Converting to upper case if user chose 2
+      echo "Converting Lower-Case to Upper-Case "
+      tr '[a-z]' '[A-Z]' <$txtFileName
+    ;;
+    
+
+    *) # exiting for all other cases
+        echo "Exiting..."
+        exit
+    ;;
+  esac
+
+
+
+
+21
+
+
+
+
+#!/bin/bash
+
+hour=`date +%c | tr -s " " | cut -d " " -f4 | cut -d ":" -f1`   
+day=`date +%A`  
+mon=`date +%B`  
+dte=`date +%d`  
+year=`date +%Y`  
+tf=`date +%r`    
+if [ $hour -ge 5 -a $hour -lt 12 ]  
+then
+        echo -e "Good morning `whoami`, Have nice day!\nThis is $day $dte in $mon of $year ($tf)"
+elif [ $hour -ge 12 -a $hour -le 13 ]   
+then
+        echo -e "Good noon `whoami`, Have nice day!\nThis is $day $dte in $mon of $year ($tf)"
+elif [ $hour -ge 14 -a $hour -lt 17 ]  
+then
+        echo -e "Good afternoon `whoami`, Have nice day!\nThis is $day $dte in $mon of $year ($tf)"
+elif [ $hour -ge 17 -a $hour -lt 21 ]   
+then
+        echo -e "Good evening `whoami`, Have nice day!\nThis is $day $dte in $mon of $year ($tf)"
+elif [ $hour -ge 21 -o $hour -lt 5 ]   
+then
+        echo -e "Good night `whoami`, Have nice day!\nThis is $day $dte in $mon of $year ($tf)"
+fi
+
+
+
+
+
+
+
+34
+
+
+
+awk -F: '{print $1}' /etc/passwd
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 11.
 
 #!/bin/bash
