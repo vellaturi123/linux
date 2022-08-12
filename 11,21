@@ -1,16 +1,26 @@
 11.
 
-#! bin/bash
-echo "The Fibonacci series is : "
-read N a b
-for (( i=0; i<N; i++ ))
+#!/bin/bash
+
+
+echo "Enter the value of n:10"
+read Num
+
+f1=0
+f2=1
+
+echo "The Fibonacci Nos <= $Num is : "
+
+i=0
+while [ $f1 -le $Num ]
 do
-    echo -n "$a "
-    fn=$((a + b))
-    a=$b
-    b=$fn
+    echo -n "$f1 "
+    fn=$((f1+f2))
+    f1=$f2
+    f2=$fn
 done
-exit 0
+echo
+
 
 
 
@@ -46,6 +56,26 @@ fi
 
 
 
+#!/bin/bash
+echo "Chess Board"
+
+for (( i=1; i<=8; i++))
+do
+        for (( j=1; j<=8; j++))
+        do
+                total=$(($i+$j))
+                temp=$(($total%2))
+                # for alternative blocks
+                if [ $temp -eq 0 ]
+                then
+                        echo -e -n "\033[47m" " "  #white
+                else
+                        echo -e -n "\033[40m" " " #black
+                fi
+        done
+        echo -e -n "\033[0m" " "
+        echo ' '
+done
 
 
 
