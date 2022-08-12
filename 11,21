@@ -1,3 +1,10 @@
+34
+
+awk -F: '{print $1}' /etc/passwd
+
+
+
+
 19
 
 find -type f -name '*.jpg' | while read f; do mv "$f" "${f%.txt}"; done
